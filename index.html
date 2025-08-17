@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질병 예측 프로그램</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="first-page" class="page active">
+        <h1>질병 예측 프로그램</h1>
+        <button id="start-btn">검사하기</button>
+    </div>
+
+    <div id="test-page" class="page">
+        <h2 id="symptom-header">해당하는 증상을 모두 선택해 주세요</h2>
+        <div id="symptoms-container">
+            </div>
+        <button id="result-btn" disabled>결과 보기</button>
+    </div>
+
+    <div id="result-page" class="page">
+        <div id="result-content">
+            <h3>나의 병명은...</h3>
+            <div id="diagnosis-ranks">
+                <div class="rank-container" id="rank-1-container">
+                    <span class="rank-label">1순위</span>
+                    <p class="rank-text" id="rank-1"></p>
+                </div>
+                <div class="rank-container" id="rank-2-container">
+                    <span class="rank-label">2순위</span>
+                    <p class="rank-text" id="rank-2"></p>
+                </div>
+                <div class="rank-container" id="rank-3-container">
+                    <span class="rank-label">3순위</span>
+                    <p class="rank-text" id="rank-3"></p>
+                </div>
+            </div>
+            <div id="disclaimer">
+                <p>정확한 진단은 전문의와 상담하세요.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
