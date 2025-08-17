@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "복통": 3, "어지러움": 3
     };
 
-    // 질병 데이터 (최신 업데이트)
+    // 질병 데이터
     const diseases = {
         "독감": ["발열", "기침", "인후통", "근육통", "두통", "콧물", "피로감", "구토"],
         "코로나": ["발열", "기침", "인후통", "근육통", "두통", "감각 상실", "호흡 곤란"],
@@ -82,15 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const diseaseScores = [];
 
             for (const disease in diseases) {
-                const diseaseSymptoms = diseases.disease;
+                const diseaseSymptoms = diseases[disease];
                 let weightedScore = 0;
                 let maxPossibleScore = 0; // 해당 질병이 얻을 수 있는 최대 점수
 
                 diseaseSymptoms.forEach(symptom => {
                     if (symptomWeights.hasOwnProperty(symptom)) {
-                        maxPossibleScore += symptomWeights.symptom;
+                        maxPossibleScore += symptomWeights[symptom];
                         if (selectedSymptoms.has(symptom)) {
-                            weightedScore += symptomWeights.symptom;
+                            weightedScore += symptomWeights[symptom];
                         }
                     }
                 });
@@ -118,22 +118,22 @@ document.addEventListener('DOMContentLoaded', () => {
             // 결과 표시
             if (diseaseScores.length > 0 && totalScore > 0) {
                 // 1순위
-                const rank1Score = (diseaseScores\[0].score / totalScore) * 100;
+                const rank1Score = (diseaseScores[0].score / totalScore) * 100;
                 rank1Container.style.display = 'flex';
-                rank1.textContent = `${diseaseScores\[0].name} (${rank1Score.toFixed(1)}%)`;
+                rank1.textContent = `${diseaseScores[0].name} (${rank1Score.toFixed(1)}%)`;
 
                 // 2순위
-                if (diseaseScores.length > 1 && diseaseScores\[1].score > 0) {
-                    const rank2Score = (diseaseScores\[1].score / totalScore) * 100;
+                if (diseaseScores.length > 1 && diseaseScores[1].score > 0) {
+                    const rank2Score = (diseaseScores[1].score / totalScore) * 100;
                     rank2Container.style.display = 'flex';
-                    rank2.textContent = `${diseaseScores\[1].name} (${rank2Score.toFixed(1)}%)`;
+                    rank2.textContent = `${diseaseScores[1].name} (${rank2Score.toFixed(1)}%)`;
                 }
 
                 // 3순위
-                if (diseaseScores.length > 2 && diseaseScores\[2].score > 0) {
-                    const rank3Score = (diseaseScores\[2].score / totalScore) * 100;
+                if (diseaseScores.length > 2 && diseaseScores[2].score > 0) {
+                    const rank3Score = (diseaseScores[2].score / totalScore) * 100;
                     rank3Container.style.display = 'flex';
-                    rank3.textContent = `${diseaseScores\[2].name} (${rank3Score.toFixed(1)}%)`;
+                    rank3.textContent = `${diseaseScores[2].name} (${rank3Score.toFixed(1)}%)`;
                 }
             } else {
                 // 일치하는 증상이 없는 경우
